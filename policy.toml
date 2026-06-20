@@ -19,6 +19,7 @@ allowed = []                       # instruction-archetype allow-list (empty = a
 [risk]
 classifier = true          # local ONNX injection/jailbreak screen
 llm_judge  = true          # DSPy LLM judge against the rule set
+judge = "gemini/gemini-flash-lite-latest"
 mode = "block"             # "block" (refuse) or "warn" (advisory only)
 block_threshold = "high"   # low | medium | high
 allow_override = true      # set false to make blocks non-overridable by --override-risk
