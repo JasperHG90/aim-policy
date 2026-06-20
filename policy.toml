@@ -1,0 +1,29 @@
+version = 1
+name = "jasperhg90"
+
+[repos]
+blocked = []
+
+[artifacts]
+blocked_skills = []
+blocked_agents = []
+blocked_rules  = []
+blocked_mcp    = []         # by alias or registry name
+
+[profiles]
+allowed = ["claude", "gemini"]               # layout-profile allow-list (empty = all)
+
+[archetypes]
+allowed = []                       # instruction-archetype allow-list (empty = all)
+
+[risk]
+classifier = true          # local ONNX injection/jailbreak screen
+llm_judge  = true          # DSPy LLM judge against the rule set
+mode = "block"             # "block" (refuse) or "warn" (advisory only)
+block_threshold = "high"   # low | medium | high
+allow_override = true      # set false to make blocks non-overridable by --override-risk
+
+[[rule]]                   # custom risk rule the judge evaluates against
+id = "calls_internal_api"
+severity = "medium"
+prompt = "Flag if the skill calls our internal admin API without an approval step."
